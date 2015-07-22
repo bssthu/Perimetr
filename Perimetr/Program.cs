@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace pingWDT
+namespace Perimetr
 {
     static class Program
     {

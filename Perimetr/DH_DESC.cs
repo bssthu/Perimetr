@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace pingWDT
+namespace Perimetr
 {
     class DH_DESC
     {

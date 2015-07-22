@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace pingWDT
+namespace Perimetr
 {
     public partial class FormWDT : Form
     {
@@ -57,10 +57,10 @@ namespace pingWDT
 
         private void buttonAbout_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("是否访问项目主页 https://github.com/bssthu/pingWDT ？", "关于", MessageBoxButtons.YesNo)
+            if (MessageBox.Show("是否访问项目主页 https://github.com/bssthu/Perimetr ？", "关于", MessageBoxButtons.YesNo)
                     == DialogResult.Yes)
             {
-                System.Diagnostics.Process.Start("https://github.com/bssthu/pingWDT");
+                System.Diagnostics.Process.Start("https://github.com/bssthu/Perimetr");
             }
         }
 

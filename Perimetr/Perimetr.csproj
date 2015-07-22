@@ -7,8 +7,8 @@
     <ProjectGuid>{D38FAEAB-6F35-4C06-A5DE-8C39EF609505}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>pingWDT</RootNamespace>
-    <AssemblyName>pingWDT</AssemblyName>
+    <RootNamespace>Perimetr</RootNamespace>
+    <AssemblyName>Perimetr</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

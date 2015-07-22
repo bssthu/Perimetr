@@ -1,4 +1,4 @@
-﻿namespace pingWDT
+﻿namespace Perimetr
 {
     partial class FormWDT
     {

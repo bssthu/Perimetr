@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pingWDT", "pingWDT\pingWDT.csproj", "{D38FAEAB-6F35-4C06-A5DE-8C39EF609505}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Perimetr", "Perimetr\Perimetr.csproj", "{D38FAEAB-6F35-4C06-A5DE-8C39EF609505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

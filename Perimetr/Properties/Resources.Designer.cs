@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace pingWDT.Properties
+namespace Perimetr.Properties
 {
 
 
