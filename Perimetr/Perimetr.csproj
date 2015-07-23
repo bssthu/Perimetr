@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeadHand.cs" />
     <Compile Include="DH_DESC.cs" />
     <Compile Include="FormWDT.cs">
       <SubType>Form</SubType>

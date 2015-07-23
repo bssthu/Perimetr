@@ -11,9 +11,19 @@ namespace Perimetr
 {
     public partial class FormWDT : Form
     {
+        DeadHand dh = new DeadHand();
+
         public FormWDT()
         {
             InitializeComponent();
+
+            DH_DESC saved_desc = new DH_DESC();
+            dh.ApplyConfig(saved_desc);
+            textBoxPeroid.Text = saved_desc.period.ToString();
+            textBoxMaxCount.Text = saved_desc.max_count.ToString();
+            textBoxIP.Text = saved_desc.target_IP;
+            textBoxCmd.Text = saved_desc.cmd;
+            textBoxCmdAbort.Text = saved_desc.cmd_abort;
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
@@ -23,6 +33,7 @@ namespace Perimetr
                 double period = Convert.ToDouble(textBoxPeroid.Text);
                 int max_count = Convert.ToInt32(textBoxMaxCount.Text);
                 DH_DESC desc = new DH_DESC(period, max_count, textBoxIP.Text.Trim(), textBoxCmd.Text, textBoxCmdAbort.Text);
+                dh.ApplyConfig(desc);
                 buttonApply.Enabled = false;
             }
             catch (Exception ex)
@@ -42,6 +53,7 @@ namespace Perimetr
                     == DialogResult.Yes)
             {
                 DH_DESC default_desc = new DH_DESC();
+                dh.ApplyConfig(default_desc);
                 textBoxPeroid.Text = default_desc.period.ToString();
                 textBoxMaxCount.Text = default_desc.max_count.ToString();
                 textBoxIP.Text = default_desc.target_IP;
@@ -52,7 +64,7 @@ namespace Perimetr
 
         private void buttonReset_Click(object sender, EventArgs e)
         {
-
+            dh.Reset();
         }
 
         private void buttonAbout_Click(object sender, EventArgs e)
