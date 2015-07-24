@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Timers;
 
 namespace Perimetr
@@ -9,6 +12,8 @@ namespace Perimetr
     class DeadHand
     {
         DH_DESC desc = new DH_DESC();
+        Ping pingSender = new Ping();
+
 
         /// <summary>
         /// 失联计数
@@ -19,13 +24,14 @@ namespace Perimetr
             private set;
         }
 
-        Timer timer = new Timer();
+        System.Timers.Timer timer = new System.Timers.Timer();
 
         public DeadHand()
         {
             lost_count = 0;
             timer.Stop();
             timer.Elapsed += timer_Elapsed;
+            pingSender.PingCompleted += pingCompletedCallback;
         }
 
         public void ApplyConfig(DH_DESC desc)
@@ -44,6 +50,7 @@ namespace Perimetr
         public void Reset()
         {
             lost_count = 0;
+            pingSender.SendAsyncCancel();
         }
 
         /// <summary>
@@ -53,7 +60,34 @@ namespace Perimetr
         /// <param name="e"></param>
         void timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ping(desc.target_IP);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine(ex.Message);
+            }
+        }
+
+        private void ping(string ip_addr)
+        {
+            string data = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            byte[] buf = Encoding.ASCII.GetBytes(data);
+            int timeout = 10000;    // 10s
+
+            PingOptions options = new PingOptions(64, true);
+
+            pingSender.SendAsync(ip_addr, timeout, buf);
+        }
+
+        private void pingCompletedCallback(object sender, PingCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                lost_count++;
+                System.Diagnostics.Trace.WriteLine(e.Error.ToString());
+            }
         }
     }
 }
