@@ -118,6 +118,10 @@ namespace Perimetr
         private void lost_countChanged(int count)
         {
             toolStripStatusLabelLostCountValue.Text = count.ToString();
+            if (count == 0)
+            {
+                toolStripStatusLabelStatus.Text = "就绪";
+            }
         }
 
         private void runCmd(string cmd)
@@ -140,6 +144,8 @@ namespace Perimetr
 
         private void onRunKillCmd(string cmd)
         {
+            notifyIcon1.BalloonTipText = "命令已执行";
+            notifyIcon1.ShowBalloonTip(10000);
             if (MessageBox.Show("命令已执行，是否确认", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
                     == DialogResult.No)
             {
@@ -150,6 +156,8 @@ namespace Perimetr
         private void showMsgOnStatusBar(string msg)
         {
             toolStripStatusLabelStatus.Text = msg;
+            notifyIcon1.BalloonTipText = msg;
+            notifyIcon1.ShowBalloonTip(10000);
         }
     }
 }

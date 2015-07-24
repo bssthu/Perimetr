@@ -107,7 +107,6 @@ namespace Perimetr
             PingOptions options = new PingOptions(64, true);
 
             pingSender.SendAsync(ip_addr, timeout, buf);
-            timer.Stop();
         }
 
         private void pingCompletedCallback(object sender, PingCompletedEventArgs e)
@@ -134,9 +133,7 @@ namespace Perimetr
             else
             {
                 lost_count = 0;
-                printMessage("就绪");
             }
-            timer.Start();
         }
 
         private void on_lost_count_change(int new_count)
