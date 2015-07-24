@@ -68,7 +68,6 @@
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(95, 23);
             this.textBoxIP.TabIndex = 1;
-            this.textBoxIP.Text = "166.111.8.28";
             this.textBoxIP.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelPeriod
@@ -86,7 +85,6 @@
             this.textBoxPeroid.Name = "textBoxPeroid";
             this.textBoxPeroid.Size = new System.Drawing.Size(38, 23);
             this.textBoxPeroid.TabIndex = 1;
-            this.textBoxPeroid.Text = "40";
             this.textBoxPeroid.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelPeriodUnit
@@ -104,7 +102,6 @@
             this.textBoxMaxCount.Name = "textBoxMaxCount";
             this.textBoxMaxCount.Size = new System.Drawing.Size(38, 23);
             this.textBoxMaxCount.TabIndex = 1;
-            this.textBoxMaxCount.Text = "5";
             this.textBoxMaxCount.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelLost
@@ -133,7 +130,6 @@
             this.textBoxCmd.Name = "textBoxCmd";
             this.textBoxCmd.Size = new System.Drawing.Size(320, 23);
             this.textBoxCmd.TabIndex = 1;
-            this.textBoxCmd.Text = "shutdown /s /t 30";
             this.textBoxCmd.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // textBoxCmdAbort
@@ -144,7 +140,6 @@
             this.textBoxCmdAbort.Name = "textBoxCmdAbort";
             this.textBoxCmdAbort.Size = new System.Drawing.Size(320, 23);
             this.textBoxCmdAbort.TabIndex = 1;
-            this.textBoxCmdAbort.Text = "shutdown /a";
             this.textBoxCmdAbort.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelCmdAbort

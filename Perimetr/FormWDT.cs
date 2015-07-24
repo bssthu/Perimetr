@@ -17,7 +17,19 @@ namespace Perimetr
         {
             InitializeComponent();
 
-            DH_DESC saved_desc = new DH_DESC();
+            DH_DESC saved_desc;
+            if (Properties.Settings.Default.saved)
+            {
+                saved_desc = new DH_DESC(Properties.Settings.Default.period,
+                        Properties.Settings.Default.max_count,
+                        Properties.Settings.Default.target_IP,
+                        Properties.Settings.Default.cmd,
+                        Properties.Settings.Default.cmd_abort);
+            }
+            else
+            {
+                saved_desc = new DH_DESC();
+            }
             dh.ApplyConfig(saved_desc);
             textBoxPeroid.Text = saved_desc.period.ToString();
             textBoxMaxCount.Text = saved_desc.max_count.ToString();
@@ -34,6 +46,7 @@ namespace Perimetr
                 int max_count = Convert.ToInt32(textBoxMaxCount.Text);
                 DH_DESC desc = new DH_DESC(period, max_count, textBoxIP.Text.Trim(), textBoxCmd.Text, textBoxCmdAbort.Text);
                 dh.ApplyConfig(desc);
+                saveSettings(desc);
                 buttonApply.Enabled = false;
             }
             catch (Exception ex)
@@ -54,6 +67,7 @@ namespace Perimetr
             {
                 DH_DESC default_desc = new DH_DESC();
                 dh.ApplyConfig(default_desc);
+                saveSettings(default_desc);
                 textBoxPeroid.Text = default_desc.period.ToString();
                 textBoxMaxCount.Text = default_desc.max_count.ToString();
                 textBoxIP.Text = default_desc.target_IP;
@@ -79,6 +93,17 @@ namespace Perimetr
         private void textBoxs_TextChanged(object sender, EventArgs e)
         {
             buttonApply.Enabled = true;
+        }
+
+        private void saveSettings(DH_DESC desc)
+        {
+            Properties.Settings.Default.period = desc.period;
+            Properties.Settings.Default.max_count = desc.max_count;
+            Properties.Settings.Default.target_IP = desc.target_IP;
+            Properties.Settings.Default.cmd = desc.cmd;
+            Properties.Settings.Default.cmd_abort = desc.cmd_abort;
+            Properties.Settings.Default.saved = true;
+            Properties.Settings.Default.Save();
         }
     }
 }
