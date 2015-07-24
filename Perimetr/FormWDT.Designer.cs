@@ -67,7 +67,7 @@
             this.textBoxIP.Location = new System.Drawing.Point(299, 12);
             this.textBoxIP.Name = "textBoxIP";
             this.textBoxIP.Size = new System.Drawing.Size(95, 23);
-            this.textBoxIP.TabIndex = 1;
+            this.textBoxIP.TabIndex = 3;
             this.textBoxIP.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelPeriod
@@ -101,7 +101,7 @@
             this.textBoxMaxCount.Location = new System.Drawing.Point(206, 12);
             this.textBoxMaxCount.Name = "textBoxMaxCount";
             this.textBoxMaxCount.Size = new System.Drawing.Size(38, 23);
-            this.textBoxMaxCount.TabIndex = 1;
+            this.textBoxMaxCount.TabIndex = 2;
             this.textBoxMaxCount.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelLost
@@ -129,7 +129,7 @@
             this.textBoxCmd.Location = new System.Drawing.Point(74, 41);
             this.textBoxCmd.Name = "textBoxCmd";
             this.textBoxCmd.Size = new System.Drawing.Size(320, 23);
-            this.textBoxCmd.TabIndex = 1;
+            this.textBoxCmd.TabIndex = 4;
             this.textBoxCmd.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // textBoxCmdAbort
@@ -139,7 +139,7 @@
             this.textBoxCmdAbort.Location = new System.Drawing.Point(74, 70);
             this.textBoxCmdAbort.Name = "textBoxCmdAbort";
             this.textBoxCmdAbort.Size = new System.Drawing.Size(320, 23);
-            this.textBoxCmdAbort.TabIndex = 1;
+            this.textBoxCmdAbort.TabIndex = 5;
             this.textBoxCmdAbort.TextChanged += new System.EventHandler(this.textBoxs_TextChanged);
             // 
             // labelCmdAbort
@@ -158,7 +158,7 @@
             this.buttonApply.Location = new System.Drawing.Point(12, 99);
             this.buttonApply.Name = "buttonApply";
             this.buttonApply.Size = new System.Drawing.Size(70, 23);
-            this.buttonApply.TabIndex = 3;
+            this.buttonApply.TabIndex = 6;
             this.buttonApply.Text = "应用(&A)";
             this.buttonApply.UseVisualStyleBackColor = true;
             this.buttonApply.Click += new System.EventHandler(this.buttonApply_Click);
@@ -192,7 +192,7 @@
             this.buttonDefault.Location = new System.Drawing.Point(168, 99);
             this.buttonDefault.Name = "buttonDefault";
             this.buttonDefault.Size = new System.Drawing.Size(70, 23);
-            this.buttonDefault.TabIndex = 3;
+            this.buttonDefault.TabIndex = 8;
             this.buttonDefault.Text = "默认(&D)";
             this.buttonDefault.UseVisualStyleBackColor = true;
             this.buttonDefault.Click += new System.EventHandler(this.buttonDefault_Click);
@@ -203,7 +203,7 @@
             this.buttonReset.Location = new System.Drawing.Point(246, 99);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(70, 23);
-            this.buttonReset.TabIndex = 3;
+            this.buttonReset.TabIndex = 9;
             this.buttonReset.Text = "重置(&R)";
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
@@ -214,7 +214,7 @@
             this.buttonHide.Location = new System.Drawing.Point(90, 99);
             this.buttonHide.Name = "buttonHide";
             this.buttonHide.Size = new System.Drawing.Size(70, 23);
-            this.buttonHide.TabIndex = 3;
+            this.buttonHide.TabIndex = 7;
             this.buttonHide.Text = "隐藏(&H)";
             this.buttonHide.UseVisualStyleBackColor = true;
             this.buttonHide.Click += new System.EventHandler(this.buttonHide_Click);
@@ -225,7 +225,7 @@
             this.buttonAbout.Location = new System.Drawing.Point(324, 99);
             this.buttonAbout.Name = "buttonAbout";
             this.buttonAbout.Size = new System.Drawing.Size(70, 23);
-            this.buttonAbout.TabIndex = 3;
+            this.buttonAbout.TabIndex = 10;
             this.buttonAbout.Text = "关于";
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);

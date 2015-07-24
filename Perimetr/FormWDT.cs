@@ -36,6 +36,7 @@ namespace Perimetr
             textBoxIP.Text = saved_desc.target_IP;
             textBoxCmd.Text = saved_desc.cmd;
             textBoxCmdAbort.Text = saved_desc.cmd_abort;
+            buttonApply.Enabled = false;
         }
 
         private void buttonApply_Click(object sender, EventArgs e)
