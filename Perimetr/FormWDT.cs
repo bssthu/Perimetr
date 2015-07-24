@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,12 @@ namespace Perimetr
         {
             InitializeComponent();
 
+            dh.lost_countChanged += lost_countChanged;
+            dh.kill += runCmd;
+            dh.kill += onRunKillCmd;
+            dh.cancelKill += runCmd;
+
+            // load settings
             DH_DESC saved_desc;
             if (Properties.Settings.Default.saved)
             {
@@ -105,6 +112,38 @@ namespace Perimetr
             Properties.Settings.Default.cmd_abort = desc.cmd_abort;
             Properties.Settings.Default.saved = true;
             Properties.Settings.Default.Save();
+        }
+
+        private void lost_countChanged(int count)
+        {
+            toolStripStatusLabelLostCountValue.Text = count.ToString();
+        }
+
+        private void runCmd(string cmd)
+        {
+            try
+            {
+                Process process = new Process();
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                startInfo.FileName = "cmd.exe";
+                startInfo.Arguments = "/C " + cmd;
+                process.StartInfo = startInfo;
+                process.Start();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "无法执行命令");
+            }
+        }
+
+        private void onRunKillCmd(string cmd)
+        {
+            if (MessageBox.Show("命令已执行，是否确认", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+                    == DialogResult.No)
+            {
+                dh.AbortCmd();
+            }
         }
     }
 }

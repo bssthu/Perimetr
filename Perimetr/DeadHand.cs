@@ -11,7 +11,15 @@ namespace Perimetr
 {
     class DeadHand
     {
+        public delegate void lost_countChangedDelegate(int count);
+        public event lost_countChangedDelegate lost_countChanged;
+
+        public delegate void killDelegate(string cmd);
+        public event killDelegate kill;
+        public event killDelegate cancelKill;
+
         DH_DESC desc = new DH_DESC();
+
         Ping pingSender = new Ping();
 
 
@@ -20,15 +28,22 @@ namespace Perimetr
         /// </summary>
         public int lost_count
         {
-            get;
-            private set;
+            get
+            {
+                return lost_count_;
+            }
+            private set
+            {
+                lost_count_ = value;
+                on_lost_count_change(value);
+            }
         }
+        private int lost_count_ = 0;
 
         System.Timers.Timer timer = new System.Timers.Timer();
 
         public DeadHand()
         {
-            lost_count = 0;
             timer.Stop();
             timer.Elapsed += timer_Elapsed;
             pingSender.PingCompleted += pingCompletedCallback;
@@ -44,6 +59,14 @@ namespace Perimetr
             }
         }
 
+        public void AbortCmd()
+        {
+            if (cancelKill != null)
+            {
+                cancelKill(desc.cmd_abort);
+            }
+        }
+
         /// <summary>
         /// 重置计数
         /// </summary>
@@ -51,6 +74,7 @@ namespace Perimetr
         {
             lost_count = 0;
             pingSender.SendAsyncCancel();
+            timer.Start();
         }
 
         /// <summary>
@@ -87,6 +111,28 @@ namespace Perimetr
             {
                 lost_count++;
                 System.Diagnostics.Trace.WriteLine(e.Error.ToString());
+            }
+            else
+            {
+                lost_count = 0;
+            }
+        }
+
+        private void on_lost_count_change(int new_count)
+        {
+            if (lost_countChanged != null)
+            {
+                lost_countChanged(lost_count_);
+            }
+            // reach max lost count
+            if (lost_count_ == desc.max_count)
+            {
+                timer.Stop();
+                pingSender.SendAsyncCancel();
+                if (kill != null)
+                {
+                    kill(desc.cmd);
+                }
             }
         }
     }

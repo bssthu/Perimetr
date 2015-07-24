@@ -44,10 +44,12 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelLostCount = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelLostCountValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonDefault = new System.Windows.Forms.Button();
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonHide = new System.Windows.Forms.Button();
             this.buttonAbout = new System.Windows.Forms.Button();
+            this.toolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,24 +169,31 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelLostCount,
-            this.toolStripStatusLabelLostCountValue});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 129);
+            this.toolStripStatusLabelLostCountValue,
+            this.toolStripSeparator1,
+            this.toolStripStatusLabelStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 128);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(406, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(406, 23);
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabelLostCount
             // 
             this.toolStripStatusLabelLostCount.Name = "toolStripStatusLabelLostCount";
-            this.toolStripStatusLabelLostCount.Size = new System.Drawing.Size(92, 17);
+            this.toolStripStatusLabelLostCount.Size = new System.Drawing.Size(92, 18);
             this.toolStripStatusLabelLostCount.Text = "当前失联次数：";
             // 
             // toolStripStatusLabelLostCountValue
             // 
             this.toolStripStatusLabelLostCountValue.Name = "toolStripStatusLabelLostCountValue";
-            this.toolStripStatusLabelLostCountValue.Size = new System.Drawing.Size(15, 17);
+            this.toolStripStatusLabelLostCountValue.Size = new System.Drawing.Size(15, 18);
             this.toolStripStatusLabelLostCountValue.Text = "0";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
             // 
             // buttonDefault
             // 
@@ -229,6 +238,12 @@
             this.buttonAbout.Text = "关于";
             this.buttonAbout.UseVisualStyleBackColor = true;
             this.buttonAbout.Click += new System.EventHandler(this.buttonAbout_Click);
+            // 
+            // toolStripStatusLabelStatus
+            // 
+            this.toolStripStatusLabelStatus.Name = "toolStripStatusLabelStatus";
+            this.toolStripStatusLabelStatus.Size = new System.Drawing.Size(32, 18);
+            this.toolStripStatusLabelStatus.Text = "就绪";
             // 
             // FormWDT
             // 
@@ -286,6 +301,8 @@
         private System.Windows.Forms.Button buttonHide;
         private System.Windows.Forms.Button buttonAbout;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelLostCountValue;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelStatus;
     }
 }
 
