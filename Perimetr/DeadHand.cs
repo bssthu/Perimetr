@@ -18,6 +18,9 @@ namespace Perimetr
         public event killDelegate kill;
         public event killDelegate cancelKill;
 
+        public delegate void printDelegate(string msg);
+        public event printDelegate printMsg;
+
         DH_DESC desc = new DH_DESC();
 
         Ping pingSender = new Ping();
@@ -74,6 +77,7 @@ namespace Perimetr
         {
             lost_count = 0;
             pingSender.SendAsyncCancel();
+            printMessage("就绪");
             timer.Start();
         }
 
@@ -90,7 +94,7 @@ namespace Perimetr
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine(ex.Message);
+                printMessage(ex.Message);
             }
         }
 
@@ -103,19 +107,36 @@ namespace Perimetr
             PingOptions options = new PingOptions(64, true);
 
             pingSender.SendAsync(ip_addr, timeout, buf);
+            timer.Stop();
         }
 
         private void pingCompletedCallback(object sender, PingCompletedEventArgs e)
         {
+            if (e.Cancelled)
+            {
+                return;
+            }
             if (e.Error != null)
             {
                 lost_count++;
-                System.Diagnostics.Trace.WriteLine(e.Error.ToString());
+                string msg = e.Error.Message;
+                if (e.Error.GetBaseException() != null)
+                {
+                    msg += e.Error.GetBaseException().Message;
+                }
+                printMessage(msg);
+            }
+            else if (e.Reply.Status != IPStatus.Success)
+            {
+                lost_count++;
+                printMessage(e.Reply.Status.ToString());
             }
             else
             {
                 lost_count = 0;
+                printMessage("就绪");
             }
+            timer.Start();
         }
 
         private void on_lost_count_change(int new_count)
@@ -133,6 +154,15 @@ namespace Perimetr
                 {
                     kill(desc.cmd);
                 }
+            }
+        }
+
+        private void printMessage(string msg)
+        {
+            if (printMsg != null)
+            {
+                System.Diagnostics.Trace.WriteLine(msg);
+                printMsg(msg);
             }
         }
     }

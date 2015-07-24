@@ -22,6 +22,7 @@ namespace Perimetr
             dh.kill += runCmd;
             dh.kill += onRunKillCmd;
             dh.cancelKill += runCmd;
+            dh.printMsg += showMsgOnStatusBar;
 
             // load settings
             DH_DESC saved_desc;
@@ -144,6 +145,11 @@ namespace Perimetr
             {
                 dh.AbortCmd();
             }
+        }
+
+        private void showMsgOnStatusBar(string msg)
+        {
+            toolStripStatusLabelStatus.Text = msg;
         }
     }
 }
