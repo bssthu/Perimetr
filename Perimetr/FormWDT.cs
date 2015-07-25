@@ -14,6 +14,8 @@ namespace Perimetr
     {
         DeadHand dh = new DeadHand();
 
+        protected bool isFirstShown = true;
+
         public FormWDT()
         {
             InitializeComponent();
@@ -66,7 +68,7 @@ namespace Perimetr
 
         private void buttonHide_Click(object sender, EventArgs e)
         {
-
+            this.Visible = false;
         }
 
         private void buttonDefault_Click(object sender, EventArgs e)
@@ -158,6 +160,25 @@ namespace Perimetr
             toolStripStatusLabelStatus.Text = msg;
             notifyIcon1.BalloonTipText = msg;
             notifyIcon1.ShowBalloonTip(10000);
+        }
+
+        private void notifyIcon1_DoubleClick(object sender, EventArgs e)
+        {
+            this.Visible = true;
+        }
+
+        protected override void SetVisibleCore(bool value)
+        {
+            if (isFirstShown)
+            {
+                isFirstShown = false;
+                notifyIcon1.BalloonTipText = "死手系统已启动";
+                notifyIcon1.ShowBalloonTip(1000);
+            }
+            else
+            {
+                base.SetVisibleCore(value);
+            }
         }
     }
 }
