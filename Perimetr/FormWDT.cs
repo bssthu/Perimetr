@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ namespace Perimetr
 
         protected bool isFirstShown = true;
 
+        string logFilename = "Perimetr.log";
+
         public FormWDT()
         {
             InitializeComponent();
@@ -25,6 +28,7 @@ namespace Perimetr
             dh.kill += onRunKillCmd;
             dh.cancelKill += runCmd;
             dh.printMsg += showMsgOnStatusBar;
+            dh.printMsg += logMsg;
 
             // load settings
             DH_DESC saved_desc;
@@ -160,6 +164,20 @@ namespace Perimetr
             toolStripStatusLabelStatus.Text = msg;
             notifyIcon1.BalloonTipText = msg;
             notifyIcon1.ShowBalloonTip(10000);
+        }
+
+        private void logMsg(string msg)
+        {
+            try
+            {
+                StreamWriter sw = new StreamWriter(logFilename, true);
+                sw.WriteLine(String.Format("{0}, {1}, {2}", DateTime.Now.ToString(), dh.lost_count, msg));
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.Message);
+            }
         }
 
         private void notifyIcon1_DoubleClick(object sender, EventArgs e)
