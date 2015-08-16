@@ -94,6 +94,7 @@ namespace Perimetr
             }
             catch (Exception ex)
             {
+                lost_count++;
                 printMessage(ex.Message);
             }
         }
